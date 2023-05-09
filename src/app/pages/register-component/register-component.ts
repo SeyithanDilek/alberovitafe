@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  FormControl,
   UntypedFormBuilder,
   UntypedFormGroup,
   Validators,
@@ -12,6 +13,7 @@ import {
 })
 export class RegisterComponent implements OnInit {
   validateForm!: UntypedFormGroup;
+  registerForm: any;
 
   submitForm(): void {
     console.log('submit', this.validateForm.value);
@@ -21,9 +23,24 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
+      name: [null, [Validators.required]],
+      surname: [null, [Validators.required]],
       password: [null, [Validators.required]],
       remember: [true],
+      confirmPassword: ['', Validators.required],
+      checkPassword: ['', Validators.required],
+      agree: [null, Validators.required],
+      phoneNumber: [null, Validators.required],
+      email: [null, Validators.required],
     });
+  }
+  updateConfirmValidator(): void {
+    const password = this.registerForm.get('password');
+    const confirmPassword = this.registerForm.get('confirmPassword');
+    if (password.value !== confirmPassword.value) {
+      confirmPassword.setErrors({ matchPassword: true });
+    } else {
+      confirmPassword.setErrors(null);
+    }
   }
 }
