@@ -83,7 +83,11 @@
         <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired
           >Parola Tekrar</nz-form-label
         >
-        <nz-form-control [nzSm]="14" [nzXs]="24" [nzErrorTip]="errorTpl">
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="Lütfen parolanızı tekrar giriniz!"
+        >
           <input
             nz-input
             type="password"

@@ -16,7 +16,16 @@ export class RegisterComponent implements OnInit {
   registerForm: any;
 
   submitForm(): void {
-    console.log('submit', this.validateForm.value);
+    if (this.validateForm.valid) {
+      console.log('submit', this.validateForm.value);
+    } else {
+      Object.values(this.validateForm.controls).forEach((control) => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      });
+    }
   }
 
   constructor(private fb: UntypedFormBuilder) {}
