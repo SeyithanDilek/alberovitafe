@@ -1,0 +1,15 @@
+.content {
+  width: 100%;
+}
+
+img {
+  float: left;
+  margin-right: 10px;
+  width: 500px;
+  height: 550px;
+}
+
+.text {
+  margin-left: 600px;
+  margin-bottom: 65px;
+}
